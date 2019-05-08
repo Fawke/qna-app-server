@@ -1,0 +1,15 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - 8080:8080
+    links:
+      - mongodb
+    environment:
+      - MONGODB_URL=mongodb://mongodb
+  mongodb:
+    image: mvertes/alpine-mongo
+    ports:
+      - 27017:27017

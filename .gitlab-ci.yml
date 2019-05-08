@@ -1,0 +1,17 @@
+image: mhart/alpine-node
+before_script:
+  - npm install
+services:
+  - mvertes/apline-mongo
+states:
+  - test
+lint_test:
+  state: test
+  script:
+    - npm run lint
+unit_test:
+  stage: test
+  variables:
+    MONGODB_URL: mongodb://mvertes-alpine-mongo
+  script:
+    - npm run test
